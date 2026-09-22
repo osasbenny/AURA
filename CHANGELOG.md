@@ -6,6 +6,8 @@
 - Updated the root README to distinguish documented intent from implemented or externally configured systems.
 - No secrets, cloud resources, deployments, payments, payouts, DNS, IAM, or production changes were made.
 - Tests were not run because this savepoint contains documentation only.
+- Commit: `3571f9eafa6250096600f75211c369aac7083cf5` (`chore: establish AURA documentation foundation`).
+- GitHub push: verified; `origin/main` matched the commit after push.
 
 ## 2026-09-22 — documentation baseline
 - Organized AURA project documentation and legal working drafts into a standard structure.
