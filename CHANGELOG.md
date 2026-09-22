@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-09-22 — first application execution savepoint
+- Initialized the managed full-stack AURA project from the comprehensive build prompt.
+- Implemented the public landing experience and authenticated private campaign-draft flow.
+- Added the initial auditable `campaigns` schema, migration, public discovery procedure, creator listing procedure, and validated draft-creation procedure.
+- Added focused tests for public discovery, authentication, and input validation.
+- Verification: `pnpm check` passed; 2 test files / 4 tests passed; `pnpm build` passed with a non-blocking bundle-size warning.
+- Managed project checkpoint: `bc18023f`.
+- The managed scaffold uses Drizzle with MySQL/TiDB rather than the preferred PostgreSQL/Prisma target in the product prompt; this is recorded as a provisional execution constraint and is not a final architecture decision.
+- Payment, WhatsApp, identity, evidence processing, production infrastructure, real-money flows, and provider approvals remain pending or gated.
+- GitHub synchronization is limited to source, schema, tests, and build configuration; no external provider or production changes were made.
+
 ## 2026-09-22 — repository foundation savepoint
 - Audited the authenticated central repository before editing; it contained only the initial README commit.
 - Merged the AURA documentation pack, legal working drafts, environment template, and repository rules without replacing existing Git history.

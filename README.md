@@ -11,7 +11,7 @@ AURA is a documentation-first foundation for a Nigeria-first, WhatsApp-led fundr
 
 ## Repository status
 
-The repository currently contains the reconciled project documentation and legal working drafts. Application source, infrastructure, and tests are not yet implemented in this baseline. Do not infer that AWS, Vercel, WhatsApp, payment, identity, or production systems are configured from documentation alone.
+The repository contains the reconciled project documentation and legal working drafts plus the first verified application foundation. Implemented in the current savepoint: a warm public landing experience, authenticated campaign-draft creation, the initial campaigns schema and tRPC procedures, and focused unit tests. Do not infer that AWS, Vercel, WhatsApp, payment, identity, or production systems are configured from documentation alone.
 
 ## Intended structure
 

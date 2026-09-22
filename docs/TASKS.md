@@ -16,6 +16,7 @@
 - [ ] Confirm stack/repo layout; environments/CI/secrets.
 - [ ] Auth/RBAC/audit/database baseline.
 - [ ] Campaign state machine and API contracts.
+- [x] First execution slice: public landing, private campaign draft, initial schema/procedures, and focused tests.
 
 ## Phase 3 — Workflows
 - [ ] Campaign draft/editor/submission.
