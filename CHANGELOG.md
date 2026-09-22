@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-22 — GitHub author correction savepoint
+- Rewrote the AURA `main` history so all four commits use the `osasbenny` GitHub identity.
+- Force-pushed the corrected history to `osasbenny/AURA` after explicit user approval.
+- Verified remote `origin/main`: `31c3935fdcad2f6de1d6e579da1046b157e134df`.
+- Preserved a local recovery ref at `backup/pre-author-rewrite`; it is not a remote branch.
+
 ## 2026-09-22 — first application execution savepoint
 - Initialized the managed full-stack AURA project from the comprehensive build prompt.
 - Implemented the public landing experience and authenticated private campaign-draft flow.

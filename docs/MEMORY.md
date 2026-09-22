@@ -2,6 +2,10 @@
 
 AURA — Human generosity, amplified by AI. Core promise: raise money by simply having a conversation. Nigeria-first, Africa ambition; WhatsApp + web + human support. Pillars: AURA AI, Trust, Payments, Human. Production money flows require legal and provider approval. Keep secrets and unnecessary personal data out of this file.
 
+## 2026-09-22 GitHub author correction
+
+The central `osasbenny/AURA` `main` history was rewritten with explicit approval so the four existing commits are attributed to `osasbenny` using the verified GitHub noreply identity. Remote verification matched `31c3935fdcad2f6de1d6e579da1046b157e134df`. The Aura-V3 frontend repository is a separate existing source of truth and has been cloned for integration; its visual design is to remain unchanged.
+
 ## 2026-09-22 repository foundation savepoint
 
 The authenticated central repository `osasbenny/AURA` was audited before editing. Its `main` branch contained only the initial README commit. The documentation pack and legal working drafts were merged into the repository as the first foundation savepoint. No application code, infrastructure, provider configuration, deployment, or production payment capability is claimed by this savepoint.
