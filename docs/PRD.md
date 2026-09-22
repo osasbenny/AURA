@@ -1,0 +1,3 @@
+# Product Requirements
+
+AURA enables fundraisers to create, verify, publish and manage campaigns through WhatsApp/web with AI assistance and human support. MVP: campaign drafts/lifecycle, private evidence, identity adapter, trust-review console, approved-provider test checkout, verified webhooks, append-only ledger, reconciliation, updates/notifications, reporting and human handoff. Out of scope: investment crowdfunding, lending, crypto, wallet, unsupported cross-border payouts and autonomous high-risk approval. Acceptance: campaign draft→evidence→review→publish in staging; test donation via provider; duplicate webhook idempotent; ledger/reconciliation consistent; human handoff preserves authorized context.

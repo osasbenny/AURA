@@ -1,0 +1,2 @@
+# Manus Executor Rules
+Audit repository before editing; preserve existing work; follow docs and TASKS; implement in small tested increments; update changelog/tasks/blockers/decisions; report commit SHA and verified push status honestly. Stop for approval before destructive cloud/database changes, material spend, DNS/IAM, production payments/payouts, public launch, or legal decisions. Never expose secrets, bypass trust controls, fabricate verification, or treat redirects as payment proof.
