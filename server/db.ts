@@ -1,7 +1,7 @@
 import { eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import { desc } from "drizzle-orm";
-import { InsertCampaign, InsertUser, campaigns, users } from "../drizzle/schema";
+import { InsertCampaign, InsertUser, campaigns, users, whatsappConversations, whatsappEvents, whatsappMessages } from "../drizzle/schema";
 import { ENV } from "./_core/env";
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -20,8 +20,8 @@ export async function getDb() {
 }
 
 export async function upsertUser(user: InsertUser): Promise<void> {
-  if (!user.openId) {
-    throw new Error("User openId is required for upsert");
+  if (!user.authSubject) {
+    throw new Error("User authSubject is required for upsert");
   }
 
   const db = await getDb();
@@ -32,7 +32,7 @@ export async function upsertUser(user: InsertUser): Promise<void> {
 
   try {
     const values: InsertUser = {
-      openId: user.openId,
+      authSubject: user.authSubject,
     };
     const updateSet: Record<string, unknown> = {};
 
@@ -56,7 +56,7 @@ export async function upsertUser(user: InsertUser): Promise<void> {
     if (user.role !== undefined) {
       values.role = user.role;
       updateSet.role = user.role;
-    } else if (user.openId === ENV.ownerOpenId) {
+    } else if (user.authSubject === ENV.ownerAuthSubject) {
       values.role = 'admin';
       updateSet.role = 'admin';
     }
@@ -78,14 +78,14 @@ export async function upsertUser(user: InsertUser): Promise<void> {
   }
 }
 
-export async function getUserByOpenId(openId: string) {
+export async function getUserByAuthSubject(authSubject: string) {
   const db = await getDb();
   if (!db) {
     console.warn("[Database] Cannot get user: database not available");
     return undefined;
   }
 
-  const result = await db.select().from(users).where(eq(users.openId, openId)).limit(1);
+  const result = await db.select().from(users).where(eq(users.authSubject, authSubject)).limit(1);
 
   return result.length > 0 ? result[0] : undefined;
 }
@@ -125,4 +125,56 @@ export async function createCampaignDraft(campaign: InsertCampaign) {
     .limit(1);
 
   return result[0];
+}
+
+export async function recordWhatsappEvent(event: {
+  eventId: string;
+  phoneNumberId?: string;
+  payload: string;
+}) {
+  const db = await getDb();
+  if (!db) return { duplicate: false, persisted: false };
+  try {
+    await db.insert(whatsappEvents).values(event);
+    return { duplicate: false, persisted: true };
+  } catch (error: any) {
+    if (error?.code === "ER_DUP_ENTRY" || error?.errno === 1062) return { duplicate: true, persisted: true };
+    throw error;
+  }
+}
+
+export async function upsertWhatsappConversation(input: {
+  waId: string;
+  displayName?: string;
+  lastMessageAt?: Date;
+}) {
+  const db = await getDb();
+  if (!db) return;
+  const lastMessageAt = input.lastMessageAt ?? new Date();
+  await db.insert(whatsappConversations).values({
+    waId: input.waId,
+    displayName: input.displayName ?? null,
+    lastMessageAt,
+  }).onDuplicateKeyUpdate({
+    set: { displayName: input.displayName ?? null, lastMessageAt },
+  });
+}
+
+export async function recordWhatsappMessage(message: {
+  messageId: string;
+  waId: string;
+  direction: "INBOUND" | "OUTBOUND";
+  messageType: string;
+  body?: string;
+  payload: string;
+}) {
+  const db = await getDb();
+  if (!db) return { duplicate: false, persisted: false };
+  try {
+    await db.insert(whatsappMessages).values({ ...message, body: message.body ?? null });
+    return { duplicate: false, persisted: true };
+  } catch (error: any) {
+    if (error?.code === "ER_DUP_ENTRY" || error?.errno === 1062) return { duplicate: true, persisted: true };
+    throw error;
+  }
 }

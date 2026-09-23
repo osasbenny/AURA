@@ -1,5 +1,11 @@
 # Project Memory
 
+## 2026-09-23 Firebase, Aura-V3, and WhatsApp savepoint
+
+The managed AURA checkpoint `17d6c5d2` contains Firebase-backed auth transport, the unchanged Aura-V3 frontend design, campaign-draft wiring, and the first WhatsApp backend core. Firebase project `aura-4c3a5` is owned under `osasbernie@gmail.com`; Google sign-in is enabled. The API verifies Meta webhook HMAC signatures, deduplicates inbound events, and persists conversations and messages in MySQL/TiDB tables. The live Vercel frontend and managed API health endpoint were both reachable during verification.
+
+Live WhatsApp delivery is intentionally not claimed: `WHATSAPP_VERIFY_TOKEN`, `WHATSAPP_APP_SECRET`, `WHATSAPP_PHONE_NUMBER_ID`, and `WHATSAPP_ACCESS_TOKEN` still need to be provisioned through the deployment secret workflow, and Meta webhook configuration/approval remains pending. No credentials belong in this file.
+
 AURA — Human generosity, amplified by AI. Core promise: raise money by simply having a conversation. Nigeria-first, Africa ambition; WhatsApp + web + human support. Pillars: AURA AI, Trust, Payments, Human. Production money flows require legal and provider approval. Keep secrets and unnecessary personal data out of this file.
 
 ## 2026-09-22 GitHub author correction

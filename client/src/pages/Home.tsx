@@ -117,7 +117,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="border-t border-primary/10 py-8"><div className="container flex flex-col justify-between gap-3 text-sm text-muted-foreground sm:flex-row"><span>© 2026 AURA. Human generosity, amplified by AI.</span><span>Built with care in Nigeria, for people everywhere.</span></div></footer>
+      <footer className="border-t border-primary/10 py-8"><div className="container flex flex-col justify-between gap-3 text-sm text-muted-foreground sm:flex-row"><span>© 2026 AURA. Human generosity, amplified by AI.</span><span>Designed &amp; Developed by <a href="https://cactusdigitalmedia.ng/start-a-project" target="_blank" rel="noreferrer" className="font-semibold text-primary transition hover:underline">Cactus Digital Media</a></span></div></footer>
     </div>
   );
 }

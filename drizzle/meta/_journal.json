@@ -15,6 +15,20 @@
       "when": 1790096551774,
       "tag": "0001_heavy_harry_osborn",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1790097747029,
+      "tag": "0002_parched_nebula",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1790101443741,
+      "tag": "0003_careless_riptide",
+      "breakpoints": true
     }
   ]
 }

@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-09-23 — Firebase, Aura-V3, and WhatsApp backend savepoint
+- Replaced the Manus OAuth/runtime scaffold with Firebase Admin verification and Firebase Google sign-in; Google provider is enabled in Firebase project `aura-4c3a5`.
+- Integrated the existing Aura-V3 frontend source without redesigning it, restored Firebase-authenticated tRPC transport, and retained the Cactus Digital Media footer credit.
+- Added signed Meta-compatible WhatsApp webhook verification at `/api/whatsapp/webhook`, idempotent event capture, conversation/message persistence, and focused webhook tests.
+- Added migration `0003_careless_riptide.sql` and applied the three WhatsApp persistence tables plus indexes to the managed database.
+- Verified `pnpm check`, `pnpm test` (4 files / 8 tests), `pnpm build`, managed API health, webhook rejection behavior, and the deployed Aura-V3 Vercel frontend (HTTP 200).
+- Managed checkpoint: `17d6c5d2`.
+- WhatsApp provider credentials, Meta Business approval, API hosting URL, and Vercel environment-variable wiring remain required before live delivery; no outbound WhatsApp messages are sent yet.
+
 ## 2026-09-22 — GitHub author correction savepoint
 - Rewrote the AURA `main` history so all four commits use the `osasbenny` GitHub identity.
 - Force-pushed the corrected history to `osasbenny/AURA` after explicit user approval.

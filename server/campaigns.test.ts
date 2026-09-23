@@ -19,10 +19,10 @@ function createContext(user: AuthenticatedUser | null = null): TrpcContext {
 
 const sampleUser: AuthenticatedUser = {
   id: 7,
-  openId: "campaign-test-user",
+  authSubject: "campaign-test-user",
   email: "campaign@example.com",
   name: "Campaign Tester",
-  loginMethod: "manus",
+  loginMethod: "google.com",
   role: "user",
   createdAt: new Date(),
   updatedAt: new Date(),

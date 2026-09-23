@@ -13,18 +13,18 @@
 - [ ] Approve trust, evidence, support and retention policies.
 
 ## Phase 2 — Foundation
-- [ ] Confirm stack/repo layout; environments/CI/secrets.
-- [ ] Auth/RBAC/audit/database baseline.
-- [ ] Campaign state machine and API contracts.
+- [x] Confirm stack/repo layout; environments/CI/secrets baseline documented.
+- [x] Firebase auth/RBAC/database baseline and provider-neutral request context.
+- [x] Initial campaign API contracts and durable WhatsApp event/conversation/message schema.
 - [x] First execution slice: public landing, private campaign draft, initial schema/procedures, and focused tests.
 
 ## Phase 3 — Workflows
-- [ ] Campaign draft/editor/submission.
+- [x] Campaign draft form wired to the backend while preserving Aura-V3 design.
 - [ ] Evidence pipeline and identity adapter.
 - [ ] Trust review, appeals, reports and support.
 - [ ] Public pages and creator dashboard.
 - [ ] Payment sandbox, webhooks, ledger and reconciliation.
-- [ ] WhatsApp AI tools, notifications and handoff.
+- [ ] WhatsApp AI tools, outbound delivery, notifications and human handoff; webhook persistence core is implemented.
 
 ## Phase 4 — Hardening
 - [ ] Full unit/integration/E2E/security/failure tests.
