@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Sparkles } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useRouter } from '@/context/RouterContext';
 import { ThemeToggle } from './ThemeToggle';
 import { ClayButton } from './ClayButton';
+import { BrandLogo } from './BrandLogo';
 
 const navLinks = [
   { label: 'Browse', path: '/campaigns' },
@@ -49,14 +50,10 @@ export function Navbar() {
             {/* Logo */}
             <button
               onClick={() => handleNav('/')}
-              className="flex items-center gap-2.5 group flex-shrink-0"
+              className="flex items-center group flex-shrink-0"
+              aria-label="Go to AURA home"
             >
-              <div className="w-10 h-10 rounded-clay-sm bg-gradient-to-br from-clay-400 to-clay-600 flex items-center justify-center shadow-glow-clay group-hover:scale-110 transition-transform duration-300">
-                <Sparkles className="w-5 h-5 text-white" />
-              </div>
-              <span className="font-display text-xl font-bold text-clay-primary hidden sm:block">
-                AURA
-              </span>
+              <BrandLogo className="w-[116px] sm:w-[132px] h-auto group-hover:scale-[1.03] transition-transform duration-300" />
             </button>
 
             {/* Desktop Nav */}

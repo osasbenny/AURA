@@ -1,5 +1,6 @@
-import { Sparkles, Heart } from 'lucide-react';
+import { Heart } from 'lucide-react';
 import { useRouter } from '@/context/RouterContext';
+import { BrandLogo } from './BrandLogo';
 
 const footerLinks = {
   Platform: [
@@ -79,27 +80,27 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-clay-200/50 dark:border-clay-800/50">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-clay-sm bg-gradient-to-br from-clay-400 to-clay-600 flex items-center justify-center">
-              <Sparkles className="w-4 h-4 text-white" />
+        <div className="pt-8 border-t border-clay-200/50 dark:border-clay-800/50">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <BrandLogo className="w-[116px] h-auto" />
+            <p className="text-xs text-clay-muted text-center sm:text-left">
+              © 2026 AURA. Built for African communities, by African communities.
+            </p>
+            <div className="flex items-center gap-1.5 text-xs text-clay-muted">
+              Made with <Heart className="w-3 h-3 text-clay-500 fill-clay-500" /> in Nigeria
             </div>
-            <span className="font-display text-lg font-bold text-clay-primary">AURA</span>
           </div>
-          <p className="text-xs text-clay-muted text-center sm:text-left">
-            © 2026 AURA. Built for African communities, by African communities.
+          <p className="mt-5 text-center text-xs text-clay-muted">
+            Designed and Developed By{' '}
+            <a
+              href="https://instagram.com/osas.codes"
+              target="_blank"
+              rel="noreferrer"
+              className="font-semibold text-clay-secondary hover:text-clay-primary underline decoration-clay-300 underline-offset-2 transition-colors"
+            >
+              Osagie Bernard Ebhuomhan
+            </a>
           </p>
-          <a
-            href="https://cactusdigitalmedia.ng/start-a-project"
-            target="_blank"
-            rel="noreferrer"
-            className="text-xs text-clay-muted hover:text-clay-primary transition-colors"
-          >
-            Designed &amp; Developed By Cactus Digital Media
-          </a>
-          <div className="flex items-center gap-1.5 text-xs text-clay-muted">
-            Made with <Heart className="w-3 h-3 text-clay-500 fill-clay-500" /> in Nigeria
-          </div>
         </div>
       </div>
     </footer>

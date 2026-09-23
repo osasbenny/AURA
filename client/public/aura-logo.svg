@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 88" role="img" aria-labelledby="title desc">
+  <title id="title">AURA logo</title>
+  <desc id="desc">A terracotta aura ring surrounding an abstract letter A, followed by the AURA wordmark.</desc>
+  <defs>
+    <linearGradient id="aura-gradient" x1="12" y1="10" x2="76" y2="78" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#e08560"/>
+      <stop offset="1" stop-color="#d2683a"/>
+    </linearGradient>
+    <filter id="soft-shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="2" dy="3" stdDeviation="2.5" flood-color="#b45028" flood-opacity=".22"/>
+    </filter>
+  </defs>
+  <g filter="url(#soft-shadow)">
+    <circle cx="44" cy="44" r="31" fill="none" stroke="url(#aura-gradient)" stroke-width="7" stroke-linecap="round" stroke-dasharray="152 43" transform="rotate(-42 44 44)"/>
+    <path d="M26 63 42.7 23.5a2.3 2.3 0 0 1 4.2 0L63.5 63M33.7 49.4h22.6" fill="none" stroke="#3d2e22" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="58.5" cy="25.5" r="4.2" fill="#e08560"/>
+  </g>
+  <text x="91" y="58" fill="#3d2e22" font-family="Bricolage Grotesque, Arial, sans-serif" font-size="45" font-weight="800" letter-spacing="1.5">AURA</text>
+</svg>

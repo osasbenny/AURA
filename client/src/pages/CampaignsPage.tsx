@@ -1,8 +1,7 @@
 import { useState, useMemo } from 'react';
 import { Search, SlidersHorizontal, X, LayoutGrid, HeartPulse, GraduationCap, Users, Siren, Store, Droplets, type LucideIcon } from 'lucide-react';
 import { CampaignCard } from '@/components/CampaignCard';
-import { categories } from '@/data/campaigns';
-import { useLiveCampaigns } from '@/data/liveCampaigns';
+import { campaigns, categories } from '@/data/campaigns';
 
 const iconMap: Record<string, LucideIcon> = {
   LayoutGrid, HeartPulse, GraduationCap, Users, Siren, Store, Droplets,
@@ -13,7 +12,6 @@ export function CampaignsPage() {
   const [activeCategory, setActiveCategory] = useState('all');
   const [sortBy, setSortBy] = useState('urgent');
   const [showFilters, setShowFilters] = useState(false);
-  const { campaigns } = useLiveCampaigns();
 
   const filtered = useMemo(() => {
     let result = [...campaigns];

@@ -7,11 +7,11 @@ import { ClayButton } from '@/components/ClayButton';
 import { SectionHeading } from '@/components/SectionHeading';
 import { CampaignCard } from '@/components/CampaignCard';
 import { FeatureCheck } from '@/components/Badges';
-import { useLiveCampaigns } from '@/data/liveCampaigns';
+import { campaigns, formatNaira } from '@/data/campaigns';
 
 export function HomePage() {
   const { navigate } = useRouter();
-  const { campaigns: featuredCampaigns } = useLiveCampaigns();
+  const featuredCampaigns = campaigns.slice(0, 3);
 
   const stats = [
     { icon: Users, label: 'Active Donors', value: '12,000+', color: 'text-ocean-500' },

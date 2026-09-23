@@ -11,6 +11,7 @@ import { SupportPage } from '@/pages/SupportPage';
 import { StartCampaignPage } from '@/pages/StartCampaignPage';
 import { TermsPage } from '@/pages/TermsPage';
 import { PrivacyPage } from '@/pages/PrivacyPage';
+import { FloatingChatbot } from '@/components/FloatingChatbot';
 
 function PageRouter() {
   const { path } = useRouter();
@@ -43,6 +44,7 @@ function App() {
             <PageRouter />
           </main>
           <Footer />
+          <FloatingChatbot />
         </div>
       </RouterProvider>
     </ThemeProvider>

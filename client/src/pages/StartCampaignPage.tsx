@@ -7,54 +7,10 @@ import { useRouter } from '@/context/RouterContext';
 import { ClayButton } from '@/components/ClayButton';
 import { ClayInput, ClayTextarea, ClaySelect } from '@/components/ClayInput';
 import { categories } from '@/data/campaigns';
-import { trpc } from '@/lib/trpc';
-import { startLogin } from '@/const';
-import { useAuth } from '@/_core/hooks/useAuth';
-
-const allowedCategories = categories.filter((category) =>
-  ['medical', 'emergency', 'education', 'community'].includes(category.id),
-);
-
-type CampaignForm = {
-  title: string;
-  category: 'medical' | 'emergency' | 'education' | 'community' | '';
-  story: string;
-  beneficiaryName: string;
-  relationship: string;
-  goalAmount: string;
-};
 
 export function StartCampaignPage() {
   const { navigate } = useRouter();
-  const { isAuthenticated } = useAuth();
   const [step, setStep] = useState(0);
-  const [submitError, setSubmitError] = useState('');
-  const [form, setForm] = useState<CampaignForm>({ title: '', category: '', story: '', beneficiaryName: '', relationship: '', goalAmount: '' });
-  const createDraft = trpc.campaigns.createDraft.useMutation({
-    onSuccess: () => { setSubmitError(''); setStep(2); },
-    onError: (error) => setSubmitError(error.message || 'We could not save your draft. Please try again.'),
-  });
-
-  const update = <K extends keyof CampaignForm>(field: K, value: CampaignForm[K]) => {
-    setForm((current) => ({ ...current, [field]: value }));
-    setSubmitError('');
-  };
-
-  const submitDraft = async (event: React.FormEvent) => {
-    event.preventDefault();
-    setSubmitError('');
-    if (!isAuthenticated) {
-      try { await startLogin(); } catch { setSubmitError('Please sign in with Google to save your campaign draft.'); return; }
-    }
-    createDraft.mutate({
-      title: form.title,
-      story: form.story,
-      category: form.category as 'medical' | 'emergency' | 'education' | 'community',
-      beneficiaryName: form.beneficiaryName,
-      relationship: form.relationship,
-      goalAmountMinor: Math.round(Number(form.goalAmount) * 100),
-    });
-  };
 
   const steps = [
     { icon: MessageSquareText, label: 'Start on WhatsApp', description: 'Tell AURA about your cause' },
@@ -98,7 +54,7 @@ export function StartCampaignPage() {
               Send a message and our AI will guide you through creating your campaign step by step.
               No forms to fill — just a conversation.
             </p>
-            <ClayButton variant="sage" size="lg" onClick={() => window.open('https://wa.me/?text=Hi%20AURA%2C%20I%20want%20to%20start%20a%20campaign', '_blank')}>
+            <ClayButton variant="sage" size="lg">
               <MessageSquareText className="w-5 h-5" />
               Start on WhatsApp
             </ClayButton>
@@ -141,14 +97,14 @@ export function StartCampaignPage() {
 
           {step === 0 && (
             <form className="space-y-5 animate-fade-in" onSubmit={(e) => { e.preventDefault(); setStep(1); }}>
-              <ClayInput label="Campaign Title" placeholder="e.g., Help Adaeze Walk Again" value={form.title} onChange={(event) => update('title', event.target.value)} required minLength={4} />
-              <ClaySelect label="Category" value={form.category} onChange={(event) => update('category', event.target.value as CampaignForm['category'])} required>
+              <ClayInput label="Campaign Title" placeholder="e.g., Help Adaeze Walk Again" />
+              <ClaySelect label="Category" defaultValue="">
                 <option value="" disabled>Select a category</option>
-                {allowedCategories.map((cat) => (
+                {categories.filter((c) => c.id !== 'all').map((cat) => (
                   <option key={cat.id} value={cat.id}>{cat.label}</option>
                 ))}
               </ClaySelect>
-              <ClayTextarea label="What do you need help with?" rows={4} placeholder="Describe your cause in your own words..." hint="Don't worry about making it perfect — our AI will help polish it." value={form.story} onChange={(event) => update('story', event.target.value)} required minLength={20} />
+              <ClayTextarea label="What do you need help with?" rows={4} placeholder="Describe your cause in your own words..." hint="Don't worry about making it perfect — our AI will help polish it." />
               <ClayButton variant="primary" fullWidth size="lg">
                 Continue
                 <ArrowRight className="w-5 h-5" />
@@ -157,24 +113,23 @@ export function StartCampaignPage() {
           )}
 
           {step === 1 && (
-            <form className="space-y-5 animate-fade-in" onSubmit={submitDraft}>
+            <form className="space-y-5 animate-fade-in" onSubmit={(e) => { e.preventDefault(); setStep(2); }}>
               <div className="grid sm:grid-cols-2 gap-4">
                 <ClayInput label="Your Name" placeholder="Organizer name" />
                 <ClayInput label="Phone Number" placeholder="+234..." />
               </div>
               <div className="grid sm:grid-cols-2 gap-4">
-                <ClayInput label="Beneficiary Name" placeholder="Who will receive the funds?" value={form.beneficiaryName} onChange={(event) => update('beneficiaryName', event.target.value)} required minLength={2} />
-                <ClayInput label="Relationship" placeholder="e.g., Sister, Brother, Neighbor" value={form.relationship} onChange={(event) => update('relationship', event.target.value)} required minLength={2} />
+                <ClayInput label="Beneficiary Name" placeholder="Who will receive the funds?" />
+                <ClayInput label="Relationship" placeholder="e.g., Sister, Brother, Neighbor" />
               </div>
               <ClayInput label="Location" placeholder="City, State, Country" />
-              <ClayInput label="Goal Amount (₦)" type="number" placeholder="e.g., 5000000" value={form.goalAmount} onChange={(event) => update('goalAmount', event.target.value)} required min={1} />
-              {submitError && <p className="text-sm text-red-600 dark:text-red-400" role="alert">{submitError}</p>}
+              <ClayInput label="Goal Amount (₦)" type="number" placeholder="e.g., 5000000" />
               <div className="flex gap-3">
                 <ClayButton onClick={() => setStep(0)} type="button">
                   Back
                 </ClayButton>
-                <ClayButton variant="primary" fullWidth size="lg" disabled={createDraft.isPending}>
-                  {createDraft.isPending ? 'Saving...' : 'Continue'}
+                <ClayButton variant="primary" fullWidth size="lg">
+                  Continue
                   <ArrowRight className="w-5 h-5" />
                 </ClayButton>
               </div>

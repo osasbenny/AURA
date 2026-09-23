@@ -3,15 +3,13 @@ import {
   Heart, Share2, MapPin, Clock, Users, ShieldCheck, ArrowLeft,
   CheckCircle2, MessageSquareText, TrendingUp,
 } from 'lucide-react';
-import { formatNaira, getProgressPercent } from '@/data/campaigns';
-import { useLiveCampaigns } from '@/data/liveCampaigns';
+import { campaigns, formatNaira, getProgressPercent } from '@/data/campaigns';
 import { ClayButton } from '@/components/ClayButton';
 import { TrustBadge, StatusBadge } from '@/components/Badges';
 
 export function CampaignDetailPage() {
   const { path, navigate } = useRouter();
   const id = path.replace('/campaign/', '');
-  const { campaigns } = useLiveCampaigns();
   const campaign = campaigns.find((c) => c.id === id);
 
   if (!campaign) {

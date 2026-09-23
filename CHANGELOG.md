@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-23 — Aura-V3 refresh and floating chatbot savepoint
+- Pulled the latest `osasbenny/Aura-V3` `main` updates, including the refreshed branding assets and navigation/footer refinements.
+- Preserved the existing Aura-V3 visual design and mounted the existing AURA Bot access as a fixed, responsive floating widget available across all routes while scrolling.
+- The widget provides quick support prompts and routes users to the existing Support Center; no backend chatbot behavior or WhatsApp outbound delivery was changed.
+- Verification: `pnpm check` passed and `pnpm build` passed with only the existing bundle-size warning.
+
 ## 2026-09-23 — Firebase, Aura-V3, and WhatsApp backend savepoint
 - Replaced the Manus OAuth/runtime scaffold with Firebase Admin verification and Firebase Google sign-in; Google provider is enabled in Firebase project `aura-4c3a5`.
 - Integrated the existing Aura-V3 frontend source without redesigning it, restored Firebase-authenticated tRPC transport, and retained the Cactus Digital Media footer credit.
