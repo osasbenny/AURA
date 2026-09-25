@@ -4,10 +4,9 @@ AURA is a documentation-first foundation for a Nigeria-first, WhatsApp-led fundr
 
 ## Start here
 
-1. Read [`MANUS.md`](MANUS.md) and [`RULES.md`](RULES.md).
-2. Read [`docs/AURA_MASTER.md`](docs/AURA_MASTER.md) for the product and architecture source of truth.
-3. Read [`docs/PRD.md`](docs/PRD.md), [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md), [`docs/TASKS.md`](docs/TASKS.md), and [`docs/MANUS_BUILD_PROMPT.md`](docs/MANUS_BUILD_PROMPT.md).
-4. Treat legal, payment, privacy, provider-approval, and production-readiness gates as blocking controls.
+1. Read [`RULES.md`](RULES.md) and [`docs/AURA_MASTER.md`](docs/AURA_MASTER.md) for the product and architecture source of truth.
+2. Read [`docs/PRD.md`](docs/PRD.md), [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md), [`docs/TASKS.md`](docs/TASKS.md), and [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md).
+3. Treat legal, payment, privacy, provider-approval, and production-readiness gates as blocking controls.
 
 ## Repository status
 

@@ -1,5 +1,9 @@
 # Project Memory
 
+## Provider account rule
+
+All Firebase and Google Cloud setup for AURA must use the authorized owner account `osasbernie@gmail.com`. Do not switch to another Google account during project creation, Firebase Authentication configuration, Cloud Run deployment, or secret setup.
+
 ## 2026-09-23 Firebase, Aura-V3, and WhatsApp savepoint
 
 The managed AURA checkpoint `17d6c5d2` contains Firebase-backed auth transport, the unchanged Aura-V3 frontend design, campaign-draft wiring, and the first WhatsApp backend core. Firebase project `aura-4c3a5` is owned under `osasbernie@gmail.com`; Google sign-in is enabled. The API verifies Meta webhook HMAC signatures, deduplicates inbound events, and persists conversations and messages in MySQL/TiDB tables. The live Vercel frontend and managed API health endpoint were both reachable during verification.
