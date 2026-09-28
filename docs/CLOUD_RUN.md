@@ -2,11 +2,11 @@
 
 ## Ownership and project
 
-All setup must use the authorized Google account `osasbernie@gmail.com`. The Firebase/Google Cloud project is `aura-4c3a5`. The backend service should be named `aura-api`, use the region selected for the project, and expose the existing Express entrypoint on the container `PORT` (default `8080`).
+All setup must use the authorized Google account `osasbernie@gmail.com`. The Firebase/Google Cloud project is `aura-4c3a5`. The configured backend service is named `aura`, uses `europe-west1`, and exposes the existing Express entrypoint on the container `PORT` (default `8080`).
 
 ## Prerequisites
 
-A project administrator must enable the Cloud Run Admin API and Artifact Registry API, then grant the authorized deployer permission to build/push the container and create or update Cloud Run services. The Cloud Run console currently reports that the Admin API is not enabled and that the current account cannot enable it, so deployment cannot proceed until this project-level permission issue is resolved.
+A project administrator must enable the Cloud Run Admin API and Artifact Registry API, then grant the authorized deployer permission to build/push the container and create or update Cloud Run services. These APIs are now enabled and the GitHub Cloud Build trigger is connected to `osasbenny/AURA` on `main`.
 
 ## Deployment shape
 
@@ -35,6 +35,6 @@ Set these values in Google Secret Manager or Cloud Run runtime variables; never 
 
 After deployment, verify `GET https://<cloud-run-url>/api/health` returns a healthy response, then exercise the public campaigns query and authenticated Firebase request from the Vercel deployment. Configure Meta's callback URL as `https://<cloud-run-url>/api/whatsapp/webhook`, complete the verify-token challenge, and send a signed test event before enabling production WhatsApp delivery.
 
-## Current blocker
+## Current deployment status
 
-On 24 September 2026, Cloud Run was opened under the authorized account and project, but Google Cloud reported: “The Cloud Run Admin API is not enabled. You don't have permission to enable it.” No service was created and no temporary Manus URL was promoted to production. Once an administrator resolves the API/permission prerequisite, continue from the deployment shape above.
+The first container build reached dependency installation but failed because the runtime image did not include the committed pnpm patch directory required by `pnpm install --prod --frozen-lockfile`. The Dockerfile now copies `patches/` into both build stages. Local typecheck, tests (8/8), and production build pass; rerun the connected Cloud Build trigger from `main` to publish the corrected image and obtain the service URL.
